@@ -1,26 +1,31 @@
-from pathlib import Path
+import openpyxl as xl
+from openpyxl import chart
+from openpyxl.chart import BarChart, Reference
 
-# Two types of Paths: 
-#Absolute - Starts from the start of the harddisk
-# C:\User\Sagar Shah\Program Files 
-#Relative - Starts from the current working directory
+wb = xl.load_workbook('transactions.xlsx')
+sheet = wb['Sheet1']
 
-#If no argument is given to the 'Path()' then the current working folder is taken 
-#and we can navigate anywhere in the current folder using the pathLib library
-path = Path()
+#To get a single value from some cell
+#print(sheet.cell(2,3).value)
 
+#To find the maximum enteries in a row
+#print(sheet.max_row)
 
-#To see if a directory exists or not....!!!
-#path = Path('ecommerce')
-#print(path.exists())
+#To find the maximum enteries in a column
+#print(sheet.max_column)
 
-#To create a Directory use mkdir()
-#path = Path('emails')
-#print(path.mkdir())
+for row in range(2,sheet.max_row + 1):
+    #accessing the single cell
+    cell_value = sheet.cell(row,3).value
+    corrected_price = cell_value * 0.9
+    #The next cell where corrected value is to be entered
+    corrected_cell_value = sheet.cell(row,4)
+    #Assigning the corrected value to the correct value cell
+    corrected_cell_value.value = corrected_price
 
-#To remove a directory
-#path.rmdir()
-
-#for file in path.glob('*.*'):
-for file in path.glob('*'):
-    print(file)
+values = Reference(sheet,min_row = 2, max_row = sheet.max_row,min_col = 4, max_col = 4)
+chart = BarChart()
+chart.add_data(values)
+sheet.add_chart(chart,'e2')
+#saving all the changes in a new Excel File called 'transactions2.xlsx'
+wb.save('transactions2.xlsx')
