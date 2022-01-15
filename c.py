@@ -44,11 +44,11 @@ def subFunc(user_input):
     print(diction.get(user_input))
     subUserChoice = input('>')
     var = user_input,subUserChoice
-    print(f'VAR: {var}')
+    #print(f'VAR: {var}')
     return var
 
 def callRespFunc(tupleVal):
-    print(f'First CALLRESPFUNC{type(tupleVal)}')
+    #print(f'First CALLRESPFUNC{type(tupleVal)}')
     if ('1','1') == tupleVal:
         return utils.mathAddi()
     elif ('1','2') == tupleVal:
@@ -57,15 +57,31 @@ def callRespFunc(tupleVal):
         return utils.mathDivi()
     elif ('1','4') == tupleVal:
         return utils.mathMulti()
+    elif ('2','1') == tupleVal:
+        return utils.areaTriangle()
+    elif ('2','2') == tupleVal:
+        return utils.areaSquare()
+    elif ('2','3') == tupleVal:
+        return utils.areaCube()
+    elif ('3','1') == tupleVal:
+        return utils.sufAreaCube()
+    elif ('3','2') == tupleVal:
+        return utils.sufAreaCone()
+    elif ('4','1') == tupleVal:
+        return utils.volSphere()
+    elif ('4','2') == tupleVal:
+        return utils.volCone()
+    elif ('4','3') == tupleVal:
+        return utils.volCube()
     else: 
         start()   
 
 def start():
     userInput = mainFunc()
     subUserInputFunc = subFunc(userInput)
-    print(type(subUserInputFunc))
+    #print(type(subUserInputFunc))
     val = callRespFunc(subUserInputFunc)
-    print(type(val))
+    #print(type(val))
     return val
 
 
