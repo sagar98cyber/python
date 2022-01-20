@@ -16,14 +16,14 @@ for eachItem in allIps:
     if (eachItem not in uniqueIPS):
         uniqueIPS.append(eachItem)
 
-print(f'''
-    The IPs ARE: 
-    {allIps}
-    The URLs ARE:
-    {allURLS}
-    The UNIQUE IPs:
-    {uniqueIPS}
-''')
+#print(f'''                         #uncommment this block to see all the IPs, URLs, Unique IPs
+#    The IPs ARE: 
+#    {allIps}
+#    The URLs ARE:
+#    {allURLS}
+#    The UNIQUE IPs:
+#    {uniqueIPS}
+#''')
 
 print(f'Length of all IPS: {len(allIps)}')
 print(f'Length of all URLS: {len(allURLS)}')
