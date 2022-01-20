@@ -1,5 +1,5 @@
 # python
-Task completed Practical one 
+Task completed Practicals 
 
 ## TASK 1: 
 > Perform a user defined activity and identify the event logs using sysmon & create a custom view filter in Event Viewer showing the event with Individual's Name.  [Click Here](https://github.com/sagar98cyber/python/blob/ramya-sir-pracs/event%20viewer%20sysmon%20custom%20view.png)
@@ -14,4 +14,3 @@ Task completed Practical one
 > LIST OF ALL IP ADDRESSES <br>
 > LIST OF ALL UNIQUE IP ADDRESSES <br>
 > LIST OF IP ADDRESSES & THE VISITED URLS
-
