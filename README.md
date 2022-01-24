@@ -8,7 +8,7 @@ Task completed Practicals
 >  Install & Configure sawmill log analysis tool. (https://www.sawmill.net/download.html) [Click Here](https://github.com/sagar98cyber/python/blob/ramya-sir-pracs/sawmill%20installation.png)
 
 ## TASK 3: 
->  Upload the log file and study the outputs with different log parsing options in the SAWMILL Tool.
+>  Upload the log file and study the outputs with different log parsing options in the SAWMILL Tool [Click Here](https://github.com/sagar98cyber/python/blob/ramya-sir-pracs/sawmill%20filters.png).
 
 ## TASK 3: Using Python, get the following outputs in form of individual files from the apache logs [file is attached herewith](https://github.com/sagar98cyber/python/blob/ramya-sir-pracs/apache_logs.txt)
 > [Program](https://github.com/sagar98cyber/python/blob/ramya-sir-pracs/ip_address.py) <br>
