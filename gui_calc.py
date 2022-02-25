@@ -2,85 +2,85 @@
 import math
 from tkinter import *
 
-e = ""
+exp = ""
 butBG="#3E497A"
 butFG = "#F1D00A"
 aFore = '#21325E'
 aBack = '#F0F0F0'
-def press(num):
-	global e
-	e = e + str(num)
-	equation.set(e)
+def pressed(num):
+	global exp
+	exp = exp + str(num)
+	eq.set(exp)
 
 
-def equalpress():
+def equalPress():
 	try:
-		global e
-		total = str(eval(e))
-		equation.set(total)
-		e = ""
+		global exp
+		sum = str(eval(exp))
+		eq.set(sum)
+		exp = ""
 	except:
-		equation.set(" error ")
-		e = ""
+		eq.set(" error ")
+		exp = ""
 
 def clear():
-	global e
-	e = ""
-	equation.set("")
+	global exp
+	exp = ""
+	eq.set("")
 
-def sqRoot():
-	global e
-	e = math.sqrt(int(e))
-	equation.set(e)
+def squareRoot():
+	global exp
+	exp = math.sqrt(int(exp))
+	eq.set(exp)
 
 
 
 if __name__ == "__main__":
-	gui = Tk()
-	gui.configure(background="#21325E")
-	gui.title("Sagar's Calculator")
-	gui.geometry("265x150")
-	equation = StringVar()
-	expression_field = Entry(gui, textvariable=equation,bg=butFG,fg=butBG,width=12)
+	GUI = Tk()
+	GUI.configure(background="#21325E")
+	GUI.title("Sagar's Calculator")
+	GUI.geometry("265x150")
+	eq = StringVar()
+	expression_field = Entry(GUI, textvariable=eq,bg=butFG,fg=butBG,width=12)
 	expression_field.grid(columnspan=4, ipadx=95)
-	button1 = Button(gui, text=' 1 ', fg=butFG, bg=butBG,command=lambda: press(1), height=1, width=7,activeforeground="Orange", activebackground="blue",)
-	button2 = Button(gui, text=' 2 ',fg=butFG, bg=butBG,
-					command=lambda: press(2), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button3 = Button(gui, text=' 3 ', fg=butFG, bg=butBG,
-					command=lambda: press(3), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	clear = Button(gui, text='Clear', fg=butFG, bg=butBG, command=clear, height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button4 = Button(gui, text=' 4 ', fg=butFG, bg=butBG,
-					command=lambda: press(4), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button5 = Button(gui, text=' 5 ', fg=butFG, bg=butBG,
-					command=lambda: press(5), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button6 = Button(gui, text=' 6 ', fg=butFG, bg=butBG,
-					command=lambda: press(6), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button7 = Button(gui, text=' 7 ', fg=butFG, bg=butBG,
-					command=lambda: press(7), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	minus = Button(gui, text=' - ', fg=butFG, bg=butBG,
-				command=lambda: press("-"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button8 = Button(gui, text=' 8 ',fg=butFG, bg=butBG,
-					command=lambda: press(8), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button9 = Button(gui, text=' 9 ',fg=butFG, bg=butBG,
-					command=lambda: press(9), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	multiply = Button(gui, text=' * ', fg=butFG, bg=butBG,
-					command=lambda: press("*"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button0 = Button(gui, text=' 0 ', fg=butFG, bg=butBG,
-					command=lambda: press(0), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	divide = Button(gui, text=' / ', fg=butFG, bg=butBG,
-					command=lambda: press("/"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	equal = Button(gui, text=' = ', fg=butFG, bg=butBG,
-				command=equalpress, height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	button00 = Button(gui, text=' 00 ', fg=butFG, bg=butBG,
-					command=lambda: press('00'), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	Decimal= Button(gui, text='.', fg=butFG, bg=butBG,
-					command=lambda: press('.'), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	sqrt = Button(gui, text=' sqrt ', fg=butFG, bg=butBG,
-					command=lambda: sqRoot(), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	perc = Button(gui, text=' % ', fg=butFG, bg=butBG,
-					command=lambda: press("/100*"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
-	plus = Button(gui, text=' + ', fg=butFG, bg=butBG,
-				command=lambda: press("+"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button1 = Button(GUI, text=' 1 ', fg=butFG, bg=butBG,command=lambda: pressed(1), height=1, width=7,activeforeground="Orange", activebackground="blue",)
+	button2 = Button(GUI, text=' 2 ',fg=butFG, bg=butBG,
+					command=lambda: pressed(2), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button3 = Button(GUI, text=' 3 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(3), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	clear = Button(GUI, text='Clear', fg=butFG, bg=butBG, command=clear, height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button4 = Button(GUI, text=' 4 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(4), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button5 = Button(GUI, text=' 5 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(5), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button6 = Button(GUI, text=' 6 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(6), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button7 = Button(GUI, text=' 7 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(7), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	minus = Button(GUI, text=' - ', fg=butFG, bg=butBG,
+				command=lambda: pressed("-"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button8 = Button(GUI, text=' 8 ',fg=butFG, bg=butBG,
+					command=lambda: pressed(8), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button9 = Button(GUI, text=' 9 ',fg=butFG, bg=butBG,
+					command=lambda: pressed(9), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	multiply = Button(GUI, text=' * ', fg=butFG, bg=butBG,
+					command=lambda: pressed("*"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button0 = Button(GUI, text=' 0 ', fg=butFG, bg=butBG,
+					command=lambda: pressed(0), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	divide = Button(GUI, text=' / ', fg=butFG, bg=butBG,
+					command=lambda: pressed("/"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	equal = Button(GUI, text=' = ', fg=butFG, bg=butBG,
+				command=equalPress, height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	button00 = Button(GUI, text=' 00 ', fg=butFG, bg=butBG,
+					command=lambda: pressed('00'), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	Decimal= Button(GUI, text='.', fg=butFG, bg=butBG,
+					command=lambda: pressed('.'), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	sqrt = Button(GUI, text=' sqrt ', fg=butFG, bg=butBG,
+					command=lambda: squareRoot(), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	perc = Button(GUI, text=' % ', fg=butFG, bg=butBG,
+					command=lambda: pressed("/100*"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
+	plus = Button(GUI, text=' + ', fg=butFG, bg=butBG,
+				command=lambda: pressed("+"), height=1, width=7,activeforeground=aFore, activebackground=aBack,)
 
 	Decimal.grid(row=3, column=0) 
 	sqrt.grid(row=3, column=1)
@@ -104,4 +104,4 @@ if __name__ == "__main__":
 	divide.grid(row=7, column=3)
 	
 	# start the GUI
-	gui.mainloop()
+	GUI.mainloop()
