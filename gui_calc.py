@@ -1,4 +1,3 @@
-# import everything from tkinter module
 import math
 from tkinter import *
 
