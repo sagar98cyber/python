@@ -10,21 +10,23 @@ def breakKeys(keys1):
     print(f" FLAG 5 {d} : {type(d)}")
     return d
 
-def writeOnFilePublic(data):
-    file_to_write_on = open("Public.txt", 'w')
+def writeOnFilePublic(data): 
+    file_to_write_on = open("file transfer\client\Public.txt", 'w')
     #file_to_write_on.writelines(bytes(data,"utf-8"))
     file_to_write_on.writelines(data)
+    print(f"FLAG 2 Written Files in Public")
     return True
 
 def writeOnFilePrivate(data):
-    file_to_write_on = open("Private.txt", 'w')
+    file_to_write_on = open("file transfer\client\Private.txt", 'w')
     #file_to_write_on.writelines(bytes(data,"utf-8"))
     file_to_write_on.writelines(data)
+    print(f"FLAG 2 Written Files in Private")
     return True
 
 def readPublicFile():
     TEMP = ""
-    with open("Public.txt", "r") as f:
+    with open("file transfer\client\Public.txt", "r") as f:
         for line in f:
             TEMP = TEMP+line
     PUBLIC_KEY = TEMP
@@ -34,7 +36,7 @@ def readPublicFile():
 
 def readPrivateFile():
     TEMP = ""
-    with open("Private.txt", "r") as f:
+    with open("file transfer\client\Private.txt", "r") as f:
         for line in f:
             TEMP = TEMP+line
     PRI_KEY = TEMP

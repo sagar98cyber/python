@@ -7,7 +7,6 @@ from turtle import delay
 import tqdm
 import os
 
-from urllib3 import Retry
 import cipher as c
 
 SEPARATOR = "<SEPARATOR>"
