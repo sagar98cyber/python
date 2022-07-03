@@ -1,6 +1,6 @@
 import cipher as c
 import businessLogic as bLogic
-from readWriteCustomFileOperSM import checkIfTheDirExists1
+from readWriteCustomFileOperSM import checkIfTheDirExists1,fileReadEncryptOutput
 
 BUFFER_SIZE = 256 
 PUBLIC_KEY =""
@@ -19,4 +19,6 @@ bLogic.writeOnFilePrivate(str(secretKey))
 PUBLIC_KEY = bLogic.readPublicFile()
 PRI_KEY = bLogic.readPrivateFile()
 
-checkIfTheDirExists1(fileName)
+checkIfTheDirExists1()
+
+fileReadEncryptOutput(fileName)
