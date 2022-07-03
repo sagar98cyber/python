@@ -44,7 +44,7 @@ def readPublicFile():
             TEMP = TEMP+line
     PUBLIC_KEY = TEMP
     return PUBLIC_KEY
-    print(f'FLAG 1: {PUBLIC_KEY} {type(PUBLIC_KEY)}')
+   # print(f'FLAG 1: {PUBLIC_KEY} {type(PUBLIC_KEY)}')
 
 
 def readPrivateFile():
@@ -61,7 +61,7 @@ def encrypt_file_rsa_algo_public_key(bytes1):
     print(f"\n\n PUB PUB PUB {PUBLIC_KEY}")
     print(f"\n\n BYTE BYTE BYTE {type(bytes1)} : {bytes1}")
     dataInString = c.encrypt(bytes1,key1)
-    print(f'FLAG 7 {type(dataInString)}')
+   # print(f'FLAG 7 {type(dataInString)}')
     return bytes(dataInString,"utf-8")
     #return bytes(bytes1,"utf-8")     #returning the same bytes now delete later
 
@@ -84,8 +84,8 @@ def send_file(filename, host, port):
         while True:
             # read the bytes from the file
             bytes_read = f.read(BUFFER_SIZE)
-            print(f'\n\n FLAG 0.1{str(bytes_read)}')
-            print(f"\n\n FLAG 0.2{type(bytes_read)}")
+            #print(f'\n\n FLAG 0.1{str(bytes_read)}')
+            #print(f"\n\n FLAG 0.2{type(bytes_read)}")
             if not bytes_read:
                 # file transmitting is done
                 break

@@ -11,9 +11,9 @@ def checkIfTheDirExists1():
 
 def fileReadEncryptOutput(fileName):
     #flag
-    print(f"Flag 3: FileName:",fileName)
+    #print(f"Flag 3: FileName:",fileName)
     PublicKey = breakKeys(readPublicFile())
-    print(f'PUBLUC KEY IN READ CUSTOM : {type(PublicKey[0])} : {PublicKey} : {type(breakKeys(readPublicFile()))}')
+    #print(f'PUBLUC KEY IN READ CUSTOM : {type(PublicKey[0])} : {PublicKey} : {type(breakKeys(readPublicFile()))}')
     #with open(fileName, "rb") as in_file, open("out.csv", "wb") as out_file:
     with open(fileName, "rb") as in_file, open(f'output\{fileName}', "wb") as out_file:
         while True:

@@ -60,23 +60,46 @@ def encrypt(message, publicKey):
         letter = ord(letter)
         encryptedLetter = pow(letter, e, n)
         encryptedMessage.append(encryptedLetter)
-    print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
+    #print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
     return str(encryptedMessage)
 
 def decrypt(encryptedMessage, secretKey):
     (d,n) = secretKey
     originalMessage = ""
-    print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
-    for number in encryptedMessage:
-        if number != '':
-            if number != ' ': 
-                number = int(number)
-                print(number," ",type(number))
-                originalNumber = pow(number, d, n)
-                #originalMessage += chr(originalNumber)
-                print(f"{chr(originalNumber)}")
-            else:
-                pass
+    originalNumber=0
+    #print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
+
+    enclistnew=[]
+    enclistnew2=[]
+    #print("encrypted msg: ",encryptedMessage)
+
+    for i in range(len(encryptedMessage)-1):
+        enclistnew2.append(encryptedMessage[i].replace(" ", ""))
+        #print("i=",enclistnew2[i])
+
+        enclistnew.append(int(enclistnew2[i]))
+
+    #print(enclistnew)
+    for number in enclistnew:
+        print("Number and type:",number,type(number))
+
+        #if number != '':
+            #if number != ' ': 
+                #number = int(number)
+                #print(number," ",type(number))
+                #print("number::",number)
+        originalNumber=pow(number, d, n)
+        print("Original Number:",originalNumber)
+        originalMessage+=str(chr(originalNumber))
+
+        print(f"{chr(originalNumber)}")
+        with open("output_decrpted.csv", "a") as out_file:
+            out_file.write(originalMessage)
+
+
+        #return originalMessage
+            #else:
+                #pass
     #print(f"FLAG ORIGNAL MESSAGE : {originalMessage} : {type(originalMessage)}")
     #return originalMessage
 
