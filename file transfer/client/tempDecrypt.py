@@ -13,3 +13,4 @@ with open("output\data.csv", "rb") as in_file:
                 break # end of file
                 
             print(temp)
+

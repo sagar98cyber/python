@@ -1,8 +1,9 @@
 import cipher as c
 import businessLogic as bLogic
 from readWriteCustomFileOperSM import checkIfTheDirExists1,fileReadEncryptOutput
+from res import BUFFER_SIZE
 
-BUFFER_SIZE = 256 
+
 PUBLIC_KEY =""
 PRI_KEY=""
 

@@ -6,12 +6,11 @@ from time import sleep
 from turtle import delay
 import tqdm
 import os
-
+from res import BUFFER_SIZE
 import cipher as c
 
 SEPARATOR = "<SEPARATOR>"
 
-BUFFER_SIZE = 256 
 PUBLIC_KEY =""
 PRI_KEY=""
 

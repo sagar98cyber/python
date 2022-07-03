@@ -66,12 +66,16 @@ def encrypt(message, publicKey):
 def decrypt(encryptedMessage, secretKey):
     (d,n) = secretKey
     originalMessage = ""
-
+    print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
     for number in encryptedMessage:
-        originalNumber = pow(number, d, n)
-        originalMessage += chr(originalNumber)
-
-    return originalMessage
+        if number != '':
+            number = int(number)
+            print(number," ",type(number))
+            originalNumber = pow(number, d, n)
+            #originalMessage += chr(originalNumber)
+            print(f"{originalMessage}")
+    #print(f"FLAG ORIGNAL MESSAGE : {originalMessage} : {type(originalMessage)}")
+    #return originalMessage
 
 #def main():
 #    message = bytes(input("Input the message to encrypt: "),"utf-8")
