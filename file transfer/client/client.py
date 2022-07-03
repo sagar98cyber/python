@@ -88,10 +88,11 @@ def send_file(filename, host, port):
             bytes_read = f.read(BUFFER_SIZE)
             print(f'\n\n FLAG 0.1{str(bytes_read)}')
             print(f"\n\n FLAG 0.2{type(bytes_read)}")
-            bytes_read = encrypt_file_rsa_algo_public_key(str(bytes_read))
             if not bytes_read:
                 # file transmitting is done
                 break
+            #before  transmission read all the bytes encrypt it
+            bytes_read = bytes(encrypt_file_rsa_algo_public_key(str(bytes_read)))
             # we use sendall to assure transimission in 
             # busy networks
             s.sendall(bytes_read)
