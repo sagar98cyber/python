@@ -6,6 +6,8 @@ from time import sleep
 from turtle import delay
 import tqdm
 import os
+
+from urllib3 import Retry
 import cipher as c
 
 SEPARATOR = "<SEPARATOR>"
@@ -13,6 +15,17 @@ SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 256 
 PUBLIC_KEY =""
 PRI_KEY=""
+
+def breakKeys(keys1):
+    keys1 = keys1.replace('(',"")
+    keys1 = keys1.replace(')',"")
+    response1 = keys1.split(",")
+    print(f" FLAG 3 {keys1} {type(tuple(response1))}")
+    a,b = response1
+    print(f" FLAG 4 {a} : {b} : {type(int(a))} : {type(int(b))}")
+    d = (int(a),int(b))
+    print(f" FLAG 5 {d} : {type(d)}")
+    return d
 
 def writeOnFilePublic(data):
     file_to_write_on = open("Public.txt", 'w')
@@ -27,34 +40,32 @@ def writeOnFilePrivate(data):
     return True
 
 def readPublicFile():
-        with open("Public.txt", "r") as f:
-            while True:
-                # read the bytes from the file
-                bytes_read = f.readlines()
-                PUBLIC_KEY =bytes_read
-                if not bytes_read:
-                    # file transmitting is done
-                    break
-        print(f'FLAG 1: {PUBLIC_KEY} : {bytes_read}')
-    
+    TEMP = ""
+    with open("Public.txt", "r") as f:
+        for line in f:
+            TEMP = TEMP+line
+    PUBLIC_KEY = TEMP
+    return PUBLIC_KEY
+    print(f'FLAG 1: {PUBLIC_KEY} {type(PUBLIC_KEY)}')
+
 
 def readPrivateFile():
-        with open("Private.txt", "r") as f:
-            while True:
-                # read the bytes from the file
-                bytes_read = f.readlines()
-                PRI_KEY =  bytes_read
-                if not bytes_read:
-                    # file transmitting is done
-                    break
-        print(f'FLAG 2: {bytes_read} : {bytes_read}')
+    TEMP = ""
+    with open("Private.txt", "r") as f:
+        for line in f:
+            TEMP = TEMP+line
+    PRI_KEY = TEMP
+    return PRI_KEY
+    print(f'FLAG 2:  {PRI_KEY} {type(PRI_KEY)}')
 
 def encrypt_file_rsa_algo_public_key(bytes1):
-    
+    key1 = breakKeys(PUBLIC_KEY)
     print(f"\n\n PUB PUB PUB {PUBLIC_KEY}")
-    print(f"\n\n BYTE BYTE BYTE {bytes1}")
-    #dataInString = c.encrypt(bytes1,PUBLIC_KEY)
-    #return bytes(dataInString)
+    print(f"\n\n BYTE BYTE BYTE {type(bytes1)} : {bytes1}")
+    dataInString = c.encrypt(bytes1,key1)
+    print(f'FLAG 7 {type(dataInString)}')
+    return bytes(dataInString,"utf-8")
+    #return bytes(bytes1,"utf-8")     #returning the same bytes now delete later
 
 def send_file(filename, host, port):
     # get the file size
@@ -75,13 +86,12 @@ def send_file(filename, host, port):
         while True:
             # read the bytes from the file
             bytes_read = f.read(BUFFER_SIZE)
-            #print(f'\n\n {str(bytes_read)}')
-            #print(f"\n\n {type(bytes_read)}")
+            print(f'\n\n FLAG 0.1{str(bytes_read)}')
+            print(f"\n\n FLAG 0.2{type(bytes_read)}")
+            bytes_read = encrypt_file_rsa_algo_public_key(str(bytes_read))
             if not bytes_read:
                 # file transmitting is done
                 break
-            #before  transmission read all the bytes encrypt it
-            #bytes_read = encrypt_file_rsa_algo_public_key(str(bytes_read))
             # we use sendall to assure transimission in 
             # busy networks
             s.sendall(bytes_read)
@@ -102,6 +112,7 @@ print(f"\n\n {publicKey}")
 writeOnFilePublic(str(publicKey))
 writeOnFilePrivate(str(secretKey))
 
-readPublicFile()
-readPrivateFile()
+PUBLIC_KEY = readPublicFile()
+PRI_KEY = readPrivateFile()
+print(f'After the read file operations performed: {PUBLIC_KEY} : {PRI_KEY}')
 send_file(filename=fileName,host=host,port=port)

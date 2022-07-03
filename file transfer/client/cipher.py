@@ -60,8 +60,8 @@ def encrypt(message, publicKey):
         letter = ord(letter)
         encryptedLetter = pow(letter, e, n)
         encryptedMessage.append(encryptedLetter)
-
-    return encryptedMessage
+    print(f'FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
+    return str(encryptedMessage)
 
 def decrypt(encryptedMessage, secretKey):
     (d,n) = secretKey
