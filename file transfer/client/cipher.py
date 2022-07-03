@@ -69,11 +69,14 @@ def decrypt(encryptedMessage, secretKey):
     print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
     for number in encryptedMessage:
         if number != '':
-            number = int(number)
-            print(number," ",type(number))
-            originalNumber = pow(number, d, n)
-            #originalMessage += chr(originalNumber)
-            print(f"{originalMessage}")
+            if number != ' ': 
+                number = int(number)
+                print(number," ",type(number))
+                originalNumber = pow(number, d, n)
+                #originalMessage += chr(originalNumber)
+                print(f"{chr(originalNumber)}")
+            else:
+                pass
     #print(f"FLAG ORIGNAL MESSAGE : {originalMessage} : {type(originalMessage)}")
     #return originalMessage
 
