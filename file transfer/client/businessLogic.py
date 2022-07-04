@@ -61,10 +61,10 @@ def readPrivateFile():
 def encrypt_file_rsa_algo_public_key(bytes1,PUBLIC_KEY):
     key1 = breakKeys(PUBLIC_KEY)
     #print(f"\n\n PUB PUB PUB {PUBLIC_KEY}")
-    #print(f"\n\n BYTE BYTE BYTE {type(bytes1)} : {bytes1}")
+    print(f"\n\n BYTE BYTE BYTE {type(bytes1)} : {bytes1}")
     dataInString = encrypt(bytes1,key1)
     
-    #print(f'FLAG 7 {type(dataInString)}')
+    #print(f'FLAG 7 {type(dataInString)} : {dataInString}')
     return bytes(dataInString,"utf-8")
     #return bytes(bytes1,"utf-8")     #returning the same bytes now delete later
 

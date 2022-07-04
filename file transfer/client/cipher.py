@@ -54,6 +54,7 @@ def keyGen():
     return secretKey, publicKey
 
 def encrypt(message, publicKey):
+    print(f"FLAG PRINTING BEFORE : ENCRYPTION : {message} : {type(message)}")
     (e,n) = publicKey
     encryptedMessage = []
     for letter in message:
@@ -67,7 +68,7 @@ def decrypt(encryptedMessage, secretKey):
     (d,n) = secretKey
     originalMessage = ""
     originalNumber=0
-    #print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
+    print(f'in encrypt FLAG 6 {type(str(encryptedMessage))} : {encryptedMessage}')
 
     enclistnew=[]
     enclistnew2=[]
@@ -90,11 +91,13 @@ def decrypt(encryptedMessage, secretKey):
                 #print("number::",number)
         originalNumber=pow(number, d, n)
         print("Original Number:",originalNumber)
-        originalMessage+=str(chr(originalNumber))
+        #originalMessage+=chr(originalNumber)
 
-        print(f"{chr(originalNumber)}")
+        #print(f"{chr(originalNumber)}")
         with open("output_decrpted.csv", "a") as out_file:
-            out_file.write(originalMessage)
+            #print(type(originalMessage))
+            #out_file.write(originalMessage)
+            out_file.write(chr(originalNumber))
 
 
         #return originalMessage

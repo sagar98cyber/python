@@ -18,8 +18,8 @@ def fileReadEncryptOutput(fileName):
     with open(fileName, "rb") as in_file, open(f'output\{fileName}', "wb") as out_file:
         while True:
             chunk = in_file.read(BUFFER_SIZE)
-            #print(f'CHUNK: {type(chunk)}')                         #BYTES OF DATA  
-            temp = encrypt_file_rsa_algo_public_key(str(chunk),PublicKey)
+            print(f'CHUNK: {type(chunk)}')                         #BYTES OF DATA  
+            temp = encrypt_file_rsa_algo_public_key(chunk.decode(),PublicKey)
             if chunk == b"":
                 break # end of file
                 
