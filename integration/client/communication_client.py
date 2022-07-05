@@ -1,6 +1,6 @@
 # Client Connection Code
 import socket
-
+from business_logic import fileToBeSentCheckIfFound
 from numpy import true_divide
 c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -26,6 +26,7 @@ def sInput(choice_response):
         receiving_file = input('Enter the name of the file to be retrived:')
     elif choice_response == 'Send':
         sendingFileName = input('Enter the name of the file to be sent:')
+        fileToBeSentCheckIfFound()
     else:
         print('SINPUT888888')
         exceptionChoice()

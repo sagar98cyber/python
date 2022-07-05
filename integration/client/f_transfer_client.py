@@ -4,7 +4,7 @@ Client that sends the file (uploads)
 import socket
 #import tqdm
 import os
-import argparse
+#import argparse
 
 SEPARATOR = "<SEPARATOR>"
 
@@ -40,7 +40,3 @@ def send_file(filename,host, port):
 
     # close the socket
     s.close()
-
-
-
-send_file("sagar.txt", "127.0.0.1", 5001)
