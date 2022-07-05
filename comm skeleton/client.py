@@ -8,7 +8,7 @@ c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 c.connect((socket.gethostname(), 1024))
 
 def exceptionChoice():
-    print("Please enter a valid choice\n 1. To Recieve\n 2. To Send")
+    print("\n\nPlease enter a valid choice\n 1. To Recieve\n 2. To Send")
 # Code Ends
 def fInput():
     intInput = input("Make a Choice")
