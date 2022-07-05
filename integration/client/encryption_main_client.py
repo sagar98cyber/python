@@ -20,7 +20,7 @@ def encryption(file_to_read):
     (private_key, public_key) = get_rsa_keys()
     encrypted_message = encrypt(normal_message, public_key)
     write_on_file('file_to_write_on.txt', encrypted_message)
-    
+    return True
 
 def decryption():
     (private_key, public_key) = get_rsa_keys()

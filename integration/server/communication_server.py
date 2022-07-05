@@ -1,6 +1,6 @@
 #Connection and Server Establishment Code
 
-from ast import Pass
+from f_transfer_server import receiveFile
 import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #Syntax: s.bind((ipaddress/host, port))
@@ -21,10 +21,12 @@ while True:
     print(f'{choice} : {type(choice)}')
     if choice == '1':
         clt.send(bytes("Recieve", "utf-8"))
+        
     elif choice == '2':
         clt.send(bytes("Send", "utf-8"))
     else:
         clt.send(bytes("Wrong", "utf-8"))
+    
     
 
 

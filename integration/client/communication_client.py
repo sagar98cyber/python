@@ -1,7 +1,8 @@
 # Client Connection Code
 import socket
 from business_logic import fileToBeSentCheckIfFound
-from numpy import true_divide
+from encryption_main_client import decryption, keyGeneration,encryption
+from f_transfer_client import send_file
 c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 #Syntax: client.connect((serveraddress, serverport))
@@ -26,7 +27,14 @@ def sInput(choice_response):
         receiving_file = input('Enter the name of the file to be retrived:')
     elif choice_response == 'Send':
         sendingFileName = input('Enter the name of the file to be sent:')
-        fileToBeSentCheckIfFound()
+        result = fileToBeSentCheckIfFound(sendingFileName)
+        if result == '1':
+            encryption(file_to_read=sendingFileName)
+            #send the file to server
+            #send_file(sendingFileName,"127.0.0.1",1024)
+        else:
+            exceptionChoice()
+            fInput() 
     else:
         print('SINPUT888888')
         exceptionChoice()
@@ -35,4 +43,6 @@ def sInput(choice_response):
 #while True:    
 msg = c.recv(1024)
 print(msg.decode("utf-8"))
+#keyGeneration()    #GENERATE NEW PUBLIC AND PRIVATE KEYS
 fInput()
+decryption()
