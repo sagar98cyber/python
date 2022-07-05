@@ -1,5 +1,6 @@
 #Connection and Server Establishment Code
 
+from ast import Pass
 import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #Syntax: s.bind((ipaddress/host, port))
@@ -15,4 +16,15 @@ s.listen(5)
 while True:
     clt, adr = s.accept()
     print(f"Connection to {adr} established")
-    clt.send(bytes("Socket Programming in Python", "utf-8"))
+    clt.send(bytes("1. To Recieve\n 2. To Send", "utf-8"))
+    choice = clt.recv(1024).decode()
+    print(f'{choice} : {type(choice)}')
+    if choice == '1':
+        clt.send(bytes("Recieve", "utf-8"))
+    elif choice == '2':
+        clt.send(bytes("Send", "utf-8"))
+    else:
+        clt.send(bytes("Wrong", "utf-8"))
+    
+
+
