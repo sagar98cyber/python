@@ -42,12 +42,14 @@ def send_file(filename,host, port):
     s.close()
 
 def send_file_server(filename,s):
+    filesize = os.path.getsize(filename)
+    s.send(f"{filename}{SEPARATOR}{filesize}".encode())
     print(f'Flag 2 f transfer client')
     with open(filename, "rb") as f:
         while True:
             # read the bytes from the file
             bytes_read = f.read(BUFFER_SIZE)
-            print(f'flag 3:  {bytes_read.decode()}')
+            print(f'flag 3:  {bytes_read}')
             if not bytes_read:
                 # file transmitting is done
                 break

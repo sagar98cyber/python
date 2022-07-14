@@ -1,8 +1,8 @@
 # Client Connection Code
 import socket
-from business_logic import fileToBeSentCheckIfFound
+from business_logic import fileToBeSentCheckIfFound,sendFileToServer
 from encryption_main_client import decryption, keyGeneration,encryption
-from f_transfer_client import send_file_server
+#from f_transfer_client import send_file_server
 c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 #Syntax: client.connect((serveraddress, serverport))
@@ -31,8 +31,7 @@ def sInput(choice_response,socket):
         if result == '1':
             encryption(file_to_read=sendingFileName)
             #send the file to server
-            send_file_server(filename=sendingFileName,s=socket)
-            #send_file(sendingFileName,"127.0.0.1",1024)
+            sendFileToServer(fileName=sendingFileName,socket=socket)
         else:
             exceptionChoice()
             fInput() 
