@@ -1,4 +1,4 @@
-from f_transfer_client import send_file
+from f_transfer_client import send_file_server
 from encryption_main_client import encryption,decryption
 
 def fileToBeSentCheckIfFound(fileNameCheck):
@@ -9,5 +9,6 @@ def fileToBeSentCheckIfFound(fileNameCheck):
     else:
         return '0'
 
-def sendFileToServer(fileName):
-    pass
+def sendFileToServer(fileName,socket):
+    print(f'FLAG 1: business logic')
+    send_file_server(filename=fileName,s=socket)

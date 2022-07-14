@@ -40,3 +40,23 @@ def send_file(filename,host, port):
 
     # close the socket
     s.close()
+
+def send_file_server(filename,s):
+    print(f'Flag 2 f transfer client')
+    with open(filename, "rb") as f:
+        while True:
+            # read the bytes from the file
+            bytes_read = f.read(BUFFER_SIZE)
+            print(f'flag 3:  {bytes_read.decode()}')
+            if not bytes_read:
+                # file transmitting is done
+                break
+            # we use sendall to assure transimission in 
+            # busy networks
+            s.sendall(bytes_read)
+            print(f'FLAG 4')
+            # update the progress bar
+            #progress.update(len(bytes_read))
+
+    # close the socket
+    s.close()
