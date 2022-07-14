@@ -1,6 +1,6 @@
 # Client Connection Code
 import socket
-from business_logic import fileToBeSentCheckIfFound,sendFileToServer
+from business_logic import fileToBeSentCheckIfFound,sendFileToServer,nameOfFileToBeRetrieved
 from encryption_main_client import decryption, keyGeneration,encryption
 #from f_transfer_client import send_file_server
 c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,6 +25,8 @@ def sInput(choice_response,socket):
     #msg = ""
     if choice_response == 'Recieve':
         receiving_file = input('Enter the name of the file to be retrived:')
+        ###SEND THE NAME OF THE FILE TO BE RECIEVED TO THE SERVER
+        nameOfFileToBeRetrieved(filename=receiving_file,socket=socket)
     elif choice_response == 'Send':
         sendingFileName = input('Enter the name of the file to be sent:')
         result = fileToBeSentCheckIfFound(sendingFileName)
