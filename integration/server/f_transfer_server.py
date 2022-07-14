@@ -66,7 +66,7 @@ def recieve_file_client(client_socket):
 # receive using client socket, not server socket
     received = client_socket.recv(BUFFER_SIZE).decode()
     print(f'FLAG 3: recieved : {received}')
-    filename, filesize = received.split(SEPARATOR)
+    filename, filesize, realFileName = received.split(SEPARATOR)
     # remove absolute path if there is
     filename = os.path.basename(filename)
     # convert to integer
@@ -88,7 +88,7 @@ def recieve_file_client(client_socket):
             f.write(bytes_read)
             # update the progress bar
             #progress.update(len(bytes_read))
-
+    os.rename(filename,realFileName)
     # close the client socket
     print(f'FLAG 6:f_transfer_client')
     client_socket.close()
