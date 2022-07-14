@@ -1,6 +1,7 @@
 #Connection and Server Establishment Code
-from f_transfer_server import recieve_file_client
+from f_transfer_server import recieve_file_client,send_file_client
 import socket
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #Syntax: s.bind((ipaddress/host, port))
 # To Deploy Server
@@ -22,7 +23,8 @@ while True:
     print(f'{choice} : {type(choice)}')
     if choice == '1':
         clt.send(bytes("Recieve", "utf-8"))
-        
+        print(f'FLAG 1:communication_server')
+        send_file_client(client_socket=clt)
     elif choice == '2':
         clt.send(bytes("Send", "utf-8"))
         print(f'FLAG 1:communication_server')

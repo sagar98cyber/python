@@ -95,3 +95,26 @@ def recieve_file_client(client_socket):
     # close the server socket
     #s.close()
         
+
+def send_file_client(client_socket):       
+    print(f'FLAG 2:f_transfer_client')
+    received = client_socket.recv(BUFFER_SIZE).decode()
+    print(f'FLAG 3: recieved : {received}')
+    exists = check_if_file_exist(filename=received)
+    if exists == True :
+        print(f'FLAG 4: File Exists')
+        client_socket.send(bytes("Exists","utf-8"))
+        print(f'FLAG 5: Sent')
+    else:
+        print(f'FLAG 4: File does not Exists')
+        client_socket.send(bytes("No Exists","utf-8"))
+
+
+def check_if_file_exist(filename):
+    path_name = filename
+    if os.path.exists(path_name):
+        #print("File exists")
+        return True
+    else:
+        #print("File does not exist")
+        return False
