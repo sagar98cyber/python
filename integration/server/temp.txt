@@ -79,7 +79,7 @@ def recieve_file_client(client_socket):
         while True:
             # read 1024 bytes from the socket (receive)
             bytes_read = client_socket.recv(BUFFER_SIZE)
-            print(f'FLAG 5:f_transfer_client')
+            print(f'FLAG 5:f_transfer_client:{bytes_read.decode()}')
             if not bytes_read:    
                 # nothing is received
                 # file transmitting is done
