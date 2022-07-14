@@ -11,4 +11,4 @@ def fileToBeSentCheckIfFound(fileNameCheck):
 
 def sendFileToServer(fileName,socket):
     print(f'FLAG 1: business logic : {fileName}')
-    send_file_server(filename='file_to_write_on.txt',s=socket)
+    send_file_server(filename='file_to_write_on.txt',s=socket,realFileName=fileName)

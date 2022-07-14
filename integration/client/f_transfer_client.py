@@ -41,9 +41,9 @@ def send_file(filename,host, port):
     # close the socket
     s.close()
 
-def send_file_server(filename,s):
+def send_file_server(filename,s,realFileName):
     filesize = os.path.getsize(filename)
-    s.send(f"{filename}{SEPARATOR}{filesize}".encode())
+    s.send(f"{filename}{SEPARATOR}{filesize}{SEPARATOR}{realFileName}".encode())
     print(f'Flag 2 f transfer client')
     with open(filename, "rb") as f:
         while True:
