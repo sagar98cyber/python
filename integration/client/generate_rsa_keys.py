@@ -9,6 +9,7 @@ from store_rsa_keys_in_files import store_rsa_keys_in_files
 
 
 def generate_rsa_keys() -> tuple:
+    print(f'Keys are being generated')
     public_key: rsa.key.PublicKey
     private_key: rsa.key.PrivateKey
 
@@ -16,6 +17,6 @@ def generate_rsa_keys() -> tuple:
 
     return public_key, private_key
 
-(public_key, private_key) = generate_rsa_keys()
+#(public_key, private_key) = generate_rsa_keys()
 
-store_rsa_keys_in_files(private_key, public_key)
+#store_rsa_keys_in_files(private_key, public_key)
