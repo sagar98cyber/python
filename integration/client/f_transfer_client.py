@@ -62,3 +62,19 @@ def send_file_server(filename,s,realFileName):
 
     # close the socket
     s.close()
+
+def checkIfFileExists(filename,c):
+    #send the filename to server
+    c.send(bytes(str(filename),'utf-8'))
+    #check if the file exists in the response
+    msg = c.recv(1024)
+    print(msg.decode("utf-8"))
+    if msg.decode("utf-8") == "Exists":
+        print(f'Flag 2: f_transfer_client : calling retrieveFile()')
+        retrieveFile(filename=filename,c=c)
+    else:
+        print(f'File does not exist on the server please check the file name and try again')
+        c.close()
+
+def retrieveFile(filename,c):
+    pass

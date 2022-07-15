@@ -1,5 +1,6 @@
 from f_transfer_client import send_file_server
 from encryption_main_client import encryption,decryption
+from f_transfer_client import checkIfFileExists, retrieveFile
 
 def fileToBeSentCheckIfFound(fileNameCheck):
     ###check if the file exists in the directory or not
@@ -12,3 +13,8 @@ def fileToBeSentCheckIfFound(fileNameCheck):
 def sendFileToServer(fileName,socket):
     print(f'FLAG 1: business logic : {fileName}')
     send_file_server(filename='file_to_write_on.txt',s=socket,realFileName=fileName)
+
+def nameOfFileToBeRetrieved(filename,socket):
+    print(f'FLAG 1: business logic : {filename} to be retrived')
+    response = checkIfFileExists(filename=filename,c=socket)
+    #retrieveFile(filename=filename,c=socket)
