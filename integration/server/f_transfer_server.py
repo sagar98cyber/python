@@ -74,7 +74,8 @@ def recieve_file_client(client_socket):
     # start receiving the file from the socket
     # and writing to the file stream
     #progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
-    os.remove(realFileName)
+    if os.path.exists(realFileName):
+        os.remove(realFileName)
     print(f'FLAG 4:f_transfer_client')
     with open(filename, "wb") as f:
         while True:
@@ -95,20 +96,6 @@ def recieve_file_client(client_socket):
     client_socket.close()
     # close the server socket
     #s.close()
-        
-
-def send_file_client(client_socket):       
-    print(f'FLAG 2:f_transfer_client')
-    received = client_socket.recv(BUFFER_SIZE).decode()
-    print(f'FLAG 3: recieved : {received}')
-    exists = check_if_file_exist(filename=received)
-    if exists == True :
-        print(f'FLAG 4: File Exists')
-        client_socket.send(bytes("Exists","utf-8"))
-        print(f'FLAG 5: Sent')
-    else:
-        print(f'FLAG 4: File does not Exists')
-        client_socket.send(bytes("No Exists","utf-8"))
 
 
 def check_if_file_exist(filename):
@@ -118,4 +105,44 @@ def check_if_file_exist(filename):
         return True
     else:
         #print("File does not exist")
-        return False
+        return False        
+
+def actually_sending_file(s,filename,realFileName):
+    print(f'FLAG 6: Sending begins : Actually Starting to send the file')
+    filesize = os.path.getsize(filename)
+    s.send(f"file_towriteon.txt{SEPARATOR}{filesize}{SEPARATOR}{realFileName}".encode())
+    print(f'Flag 7 f transfer client')
+    received = s.recv(BUFFER_SIZE).decode()
+    print(f'FLAG 7.5 {received}')
+    with open(realFileName, "rb") as f:
+        while True:
+            # read the bytes from the file
+            bytes_read = f.read(BUFFER_SIZE)
+            print(f'flag 3:  {bytes_read}')
+            if not bytes_read:
+                # file transmitting is done
+                break
+            # we use sendall to assure transimission in 
+            # busy networks
+            s.sendall(bytes_read)
+            print(f'FLAG 4')
+            # update the progress bar
+            #progress.update(len(bytes_read))
+
+    # close the socket
+    s.close()
+    pass
+
+def send_file_client(client_socket):       
+    print(f'FLAG 2:f_transfer_client')
+    received = client_socket.recv(BUFFER_SIZE).decode()
+    print(f'FLAG 3: recieved : {received}')
+    exists = check_if_file_exist(filename=received)
+    if exists == True :
+        print(f'FLAG 4: File Exists')
+        client_socket.send(bytes("Exists","utf-8"))
+        print(f'FLAG 5: Sent : Starting to send the file')
+        actually_sending_file(client_socket,received,received)
+    else:
+        print(f'FLAG 4: File does not Exists')
+        client_socket.send(bytes("No Exists","utf-8"))
