@@ -1,6 +1,7 @@
 """
 Client that sends the file (uploads)
 """
+from importlib.resources import path
 import socket
 #import tqdm
 import os
@@ -11,7 +12,7 @@ SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 1024 * 4
 
 
-def send_file(filename,host, port):
+'''def send_file(filename,host, port):
     # get the file size
     filesize = os.path.getsize(filename)
     # create the client socket
@@ -40,6 +41,7 @@ def send_file(filename,host, port):
 
     # close the socket
     s.close()
+'''
 
 def send_file_server(filename,s,realFileName):
     filesize = os.path.getsize(filename)
@@ -63,6 +65,45 @@ def send_file_server(filename,s,realFileName):
     # close the socket
     s.close()
 
+def recieve_file_server(server_socket):
+    print(f'FLAG 4:f_transfer_client')
+# receive the file infos
+# receive using client socket, not server socket
+    received = server_socket.recv(BUFFER_SIZE).decode()
+    print(f'FLAG 5: recieved : {received} : {type(received)}')
+    filename, filesize, realFileName = received.split(SEPARATOR)
+    if os.path.exists(filename):
+        os.remove(filename)
+    if os.path.exists(realFileName):
+        os.remove(realFileName)
+    # remove absolute path if there is
+    filename = os.path.basename(filename)
+    # convert to integer
+    filesize = int(filesize)
+    # start receiving the file from the socket
+    # and writing to the file stream
+    #progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+    print(f'FLAG 6:f_transfer_client')
+    server_socket.send(bytes("Send","utf-8"))
+    with open(filename, "wb") as f:
+        while True:
+            # read 1024 bytes from the socket (receive)
+            bytes_read = server_socket.recv(BUFFER_SIZE)
+            print(f'FLAG 7:f_transfer_client')
+            if not bytes_read:    
+                # nothing is received
+                # file transmitting is done
+                break
+            # write to the file the bytes we just received
+            f.write(bytes_read)
+            # update the progress bar
+            #progress.update(len(bytes_read))
+    # close the client socket
+    print(f'FLAG 8:f_transfer_client')
+    server_socket.close()
+    # close the server socket
+    #s.close()
+
 def checkIfFileExists(filename,c):
     #send the filename to server
     c.send(bytes(str(filename),'utf-8'))
@@ -77,4 +118,5 @@ def checkIfFileExists(filename,c):
         c.close()
 
 def retrieveFile(filename,c):
-    pass
+    print(f'FLAG 3 : Asaking to send the file')
+    recieve_file_server(c)
