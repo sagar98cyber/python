@@ -1,3 +1,4 @@
+import os
 from f_transfer_client import send_file_server
 from encryption_main_client import encryption,decryption
 from f_transfer_client import checkIfFileExists, retrieveFile
@@ -35,5 +36,5 @@ def decryptFileStart(newFileName,realFileName):
     decrypted_message = decrypt(encrypted_message, private_key)
     print(f'FLAG 10 : {decrypted_message} : {decrypted_message}')
     write_on_file(realFileName, decrypted_message)
-
+    os.remove(newFileName)
     pass

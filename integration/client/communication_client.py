@@ -1,7 +1,7 @@
 # Client Connection Code
 import socket
 from business_logic import fileToBeSentCheckIfFound,sendFileToServer,nameOfFileToBeRetrieved
-from encryption_main_client import decryption, keyGeneration,encryption
+from encryption_main_client import encryption
 c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 #Syntax: client.connect((serveraddress, serverport))

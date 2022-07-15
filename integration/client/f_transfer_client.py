@@ -61,6 +61,9 @@ def send_file_server(filename,s,realFileName):
 
     # close the socket
     s.close()
+    print(f'FLAG 5 : {filename} : {realFileName}')
+    os.remove(filename)
+    os.remove(realFileName)
 
 def recieve_file_server(server_socket):
     print(f'FLAG 4:f_transfer_client')
