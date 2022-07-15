@@ -1,9 +1,6 @@
 """
 Client that sends the file (uploads)
 """
-from importlib.resources import path
-import socket
-#import tqdm
 import os
 #import argparse
 
@@ -99,8 +96,9 @@ def recieve_file_server(server_socket):
             # update the progress bar
             #progress.update(len(bytes_read))
     # close the client socket
-    print(f'FLAG 8:f_transfer_client')
+    print(f'FLAG 8:f_transfer_client : {realFileName}')
     server_socket.close()
+    return filename,realFileName
     # close the server socket
     #s.close()
 
@@ -112,11 +110,15 @@ def checkIfFileExists(filename,c):
     print(msg.decode("utf-8"))
     if msg.decode("utf-8") == "Exists":
         print(f'Flag 2: f_transfer_client : calling retrieveFile()')
-        retrieveFile(filename=filename,c=c)
+        #retrieveFile(filename=filename,c=c)
+        return True
     else:
         print(f'File does not exist on the server please check the file name and try again')
         c.close()
+        return False
 
 def retrieveFile(filename,c):
     print(f'FLAG 3 : Asaking to send the file')
-    recieve_file_server(c)
+    response = recieve_file_server(c)
+    print(f'flag 9 : {response} : {type(response)}')
+    return response
