@@ -74,7 +74,8 @@ def recieve_file_client(client_socket):
     # start receiving the file from the socket
     # and writing to the file stream
     #progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
-    os.remove(realFileName)
+    if os.path.exists(realFileName):
+        os.remove(realFileName)
     print(f'FLAG 4:f_transfer_client')
     with open(filename, "wb") as f:
         while True:
