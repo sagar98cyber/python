@@ -18,5 +18,5 @@ Task completed Practicals
 
 
 ## Scripts
-> Error Handling: [Scripts](https://github.com/sagar98cyber/python-cheatsheet/tree/12/10/scripts/exception%20handling%20tut)
-> Opening a file and Read only: [File](https://github.com/sagar98cyber/python-cheatsheet/tree/12/10/scripts/dateTasks)
+> Error Handling: [Scripts](https://github.com/sagar98cyber/python-cheatsheet/tree/scripts-handy-cheatsheet/scripts/exception%20handling%20tut)
+> Opening a file and Read only: [File](https://github.com/sagar98cyber/python-cheatsheet/tree/scripts-handy-cheatsheet/scripts/dateTasks)
