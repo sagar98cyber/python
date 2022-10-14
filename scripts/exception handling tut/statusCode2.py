@@ -1,4 +1,4 @@
-from urllib import response
+#import sentineloneapi.client
 import requests 
 
 def statusCodeHandlerFunction(resCode):
@@ -42,3 +42,13 @@ try:
 
 except requests.ConnectionError:
     pass
+
+##To create a Sentinal REST API using a Bearer Token remaining
+"""
+s = requests.Session()
+key = "zzEDhD5O5MchRyaxuHLD7BtejwBSl6CnOnqdtcq4PetxyvP7V7vofBCISu6EFeX2LV3mpeLizgsANxAi"
+bearerToken = f"Bearer {key}"
+r = requests.get(url='https://usea1-muso01.sentinelone.net/web/api/v2.1/agents/count',headers={"Authorization": bearerToken})
+print(type(r))
+print(r)
+"""
